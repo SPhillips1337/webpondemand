@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect images to webp-on-demand.php (if browser supports webp)
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)\.(jpe?g|png)$ webpondemand.php?source=%{SCRIPT_FILENAME} [NC,L]
+
+AddType image/webp .webp
